@@ -23,7 +23,7 @@ def add_user():
         new_user = User(name,age)
         
         user_data={
-            "name ": new_user.name,
+            "name":new_user.name,
             "age":new_user.age 
         }   
         
@@ -64,10 +64,13 @@ def analiz_users():
         
         
         ages = np.array([user["age"] for user in users])
+        names = np.array([user["name"] for user in users])
         
         print("\n--- Age Analyze ---")    
         
         print("Ages : ",ages)
+
+        print("Name : ", names)
         
         print("Avarage : " ,ages.mean())
         
@@ -86,14 +89,29 @@ def analiz_users():
         
         print("Something wrong")
         
+def remove_all():
+    try:
+        with open ("users.json","w") as file:
+            json.dump([],file,indent=4)
+
+        print("REMOVED ALL USERS")
+
+        logging.info("REMOVED ALL USERS.")
+
+    except Exception as e:
+
+        logging.exception(e)
         
+        print("something wrong about remove function")
+
 def menu ():
     
     while True:
         
         print("\n1 -Add user")
         print("2 - Analyze")
-        print("3 - Exit")
+        print("3 - REMOVE ALL")
+        print("4 - Exit")
         
         
         choice = input("choice : ")
@@ -105,8 +123,12 @@ def menu ():
         elif(choice=="2"):
             
             analiz_users()
-            
+        
         elif(choice=="3"):
+            
+            remove_all()
+            
+        elif(choice=="4"):
             
             print("program ended")
             
