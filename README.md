@@ -31,7 +31,7 @@ Python tabanlı basit bir kullanıcı yönetim ve yaş analiz sistemi.
 ```bash id="aq8v2n"
 project/
 
-├── main.py
+├── week1.py
 ├── users.json
 ├── logger.log
 ```
